@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChurnPredict - AI Driven Customer Retention</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="background-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <main class="container">
+      <header>
+        <div class="logo">
+          <span class="icon">⚡</span>
+          <h1>Churn<span>Predict</span></h1>
+        </div>
+        <p>Predict customer churn using advanced machine learning.</p>
+      </header>
+
+      <section class="card glass-morphism">
+        <form id="predictionForm" class="grid-form">
+          <!-- Row 1 -->
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="SeniorCitizen">Senior Citizen</label>
+            <select id="SeniorCitizen" name="SeniorCitizen" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Partner">Partner</label>
+            <select id="Partner" name="Partner" required>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="form-group">
+            <label for="Dependents">Dependents</label>
+            <select id="Dependents" name="Dependents" required>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tenure">Tenure (Months)</label>
+            <input
+              type="number"
+              id="tenure"
+              name="tenure"
+              min="0"
+              value="12"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="PhoneService">Phone Service</label>
+            <select id="PhoneService" name="PhoneService" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="form-group">
+            <label for="MultipleLines">Multiple Lines</label>
+            <select id="MultipleLines" name="MultipleLines" required>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+              <option value="No phone service">No phone service</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="InternetService">Internet Service</label>
+            <select id="InternetService" name="InternetService" required>
+              <option value="Fiber optic">Fiber optic</option>
+              <option value="DSL">DSL</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Contract">Contract</label>
+            <select id="Contract" name="Contract" required>
+              <option value="Month-to-month">Month-to-month</option>
+              <option value="One year">One year</option>
+              <option value="Two year">Two year</option>
+            </select>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="form-group">
+            <label for="MonthlyCharges">Monthly Charges</label>
+            <input
+              type="number"
+              step="0.01"
+              id="MonthlyCharges"
+              name="MonthlyCharges"
+              value="70.35"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="TotalCharges">Total Charges</label>
+            <input
+              type="number"
+              step="0.01"
+              id="TotalCharges"
+              name="TotalCharges"
+              value="844.20"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="PaymentMethod">Payment Method</label>
+            <select id="PaymentMethod" name="PaymentMethod" required>
+              <option value="Electronic check">Electronic check</option>
+              <option value="Mailed check">Mailed check</option>
+              <option value="Bank transfer (automatic)">
+                Bank transfer (automatic)
+              </option>
+              <option value="Credit card (automatic)">
+                Credit card (automatic)
+              </option>
+            </select>
+          </div>
+
+          <!-- Hidden / Default values for simplicity but required by model -->
+          <input type="hidden" name="OnlineSecurity" value="No" />
+          <input type="hidden" name="OnlineBackup" value="No" />
+          <input type="hidden" name="DeviceProtection" value="No" />
+          <input type="hidden" name="TechSupport" value="No" />
+          <input type="hidden" name="StreamingTV" value="No" />
+          <input type="hidden" name="StreamingMovies" value="No" />
+          <input type="hidden" name="PaperlessBilling" value="Yes" />
+
+          <button type="submit" id="predictBtn" class="primary-btn">
+            Analyze Churn Risk
+          </button>
+        </form>
+      </section>
+
+      <section id="resultSection" class="result-card hidden">
+        <div class="result-content glass-morphism">
+          <h3>Analysis Result</h3>
+          <div class="prediction-output">
+            <span id="predictionResult">-</span>
+          </div>
+          <div class="probability-container">
+            <label>Risk Probability</label>
+            <div class="progress-bar">
+              <div id="probIndicator" class="progress-fill"></div>
+            </div>
+            <span id="probValue">0%</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
